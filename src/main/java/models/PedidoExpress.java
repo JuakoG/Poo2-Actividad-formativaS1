@@ -40,7 +40,7 @@ public class PedidoExpress extends Pedido{
 
     @Override
     public void asignarRepartidor() {
-        System.out.println("----- PEDIDO EXPRESS -----\n");
+        System.out.println("[Pedido Express]");
         System.out.println("Asignando repartidor....");
         if (repartidorDisponible && distancia <= 5) {
             System.out.println("El repartidor está disponible y se encuentra a " + distancia + " km.");
@@ -51,7 +51,6 @@ public class PedidoExpress extends Pedido{
 
 
     public void asignarRepartidor(String nombreRepartidor) {
-        System.out.println("----- PEDIDO EXPRESS -----\n");
         if (repartidorDisponible && distancia <= 5) {
             System.out.println("Su repartidor es: " + nombreRepartidor);
         } else {
