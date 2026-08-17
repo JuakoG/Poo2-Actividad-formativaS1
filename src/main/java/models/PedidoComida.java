@@ -41,18 +41,22 @@ public class PedidoComida extends Pedido {
 
     @Override
     public void asignarRepartidor() {
+        System.out.println("----- PEDIDO COMIDA -----");
+        System.out.println("Asignando y verificando repartidor....");
         if (mochilaTermica == true) {
-            System.out.println("El repartidor tiene mochila térmica.");
+            System.out.println("Verificando mochila termica..... Correcto");
         } else {
-            System.out.println("El repartidor no tiene mochila térmica.");
+            System.out.println("Verificando mochila termica.... No posee");
+            System.out.println("Asignar otro repartidor.");
         }
     }
 
     public void asignarRepartidor(String nombreRepartidor) {
+        System.out.println("----- PEDIDO COMIDA -----");
         if (mochilaTermica) {
             System.out.println("El repartidor " + nombreRepartidor + " tiene mochila térmica y fue asignado.");
         } else {
-            System.out.println("El repartidor " + nombreRepartidor + " no tiene mochila térmica.");
+            System.out.println("El repartidor " + nombreRepartidor + " no tiene mochila térmica, se debe asignar otro repartidor.");
         }
     }
 }

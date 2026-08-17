@@ -29,14 +29,17 @@ public class PedidoEncomienda extends Pedido {
 
     @Override
     public void asignarRepartidor() {
+        System.out.println("----- PEDIDO ENCOMIENDA -----\n");
+        System.out.println("Asignando repartidor....");
         if (peso <= 20 && volumen <= 0.5) {
-            System.out.println("La encomienda cumple con las condiciones de envío.");
+            System.out.println("Validando peso y embalaje.... Correcto, Cumple con los requisitos.");
         } else {
-            System.out.println("La encomienda supera la capacidad de envío.");
+            System.out.println(" Validando peso y embalaje..... Incorrecto, repartidor no cumple con los requisitos.");
         }
     }
 
     public void asignarRepartidor(String nombreRepartidor) {
+        System.out.println("----- PEDIDO ENCOMIENDA -----\n");
         if (peso <= 20 && volumen <= 0.5) {
             System.out.println("El repartidor asignado es: " + nombreRepartidor);
         } else {

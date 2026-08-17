@@ -33,12 +33,12 @@ public class Main {
         pedidos.add(pedido5);
         pedidos.add(pedido6);
 
-        System.out.println("------- Sobreescritura  ------");
+        //("------- Sobreescritura  ------");
         for (Pedido p : pedidos) {
             p.asignarRepartidor();
         }
 
-        System.out.println("------- Sobrecarga  ------");
+       // ("------- Sobrecarga  ------");
 
         // comida
 
