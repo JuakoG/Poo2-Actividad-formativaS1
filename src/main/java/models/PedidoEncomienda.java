@@ -4,8 +4,8 @@ public class PedidoEncomienda extends Pedido {
     private double peso;
     private double volumen;
 
-    public PedidoEncomienda(int idPedido, String direccionEntrega, String tipoPedido, double peso, double volumen) {
-        super(idPedido, direccionEntrega, tipoPedido);
+    public PedidoEncomienda(int idPedido, String direccionEntrega, double distanciaKm, double peso, double volumen) {
+        super(idPedido, direccionEntrega, distanciaKm);
         this.peso = peso;
         this.volumen = volumen;
     }
@@ -26,10 +26,9 @@ public class PedidoEncomienda extends Pedido {
         this.volumen = volumen;
     }
 
-
     @Override
     public void asignarRepartidor() {
-        System.out.println("[Pedido Encomienda]");
+        System.out.println("Tipo pedido : [Pedido Encomienda]");
         System.out.println("Asignando repartidor....");
         if (peso <= 20 && volumen <= 0.5) {
             System.out.println("Validando peso y embalaje.... Correcto, Cumple con los requisitos.");
@@ -45,4 +44,13 @@ public class PedidoEncomienda extends Pedido {
             System.out.println("→ Pedido no asignado a " + nombreRepartidor+ " el repartidor no cumple con las condiciones ");
         }
     }
+
+
+    @Override
+    public int calcularTiempoEntrega() {
+
+        return (int) Math.round(20 + (1.5 * getDistanciaKm()));
+    }
+
+
 }

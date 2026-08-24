@@ -3,14 +3,11 @@ package models;
 public class PedidoExpress extends Pedido{
 
     private String tienda;
-    private double distancia;
     private boolean repartidorDisponible;
 
-
-    public PedidoExpress(int idPedido, String direccionEntrega, String tipoPedido, String tienda, double distancia, boolean repartidorDisponible) {
-        super(idPedido, direccionEntrega, tipoPedido);
+    public PedidoExpress(int idPedido, String direccionEntrega, double distanciaKm, String tienda,  boolean repartidorDisponible) {
+        super(idPedido, direccionEntrega, distanciaKm);
         this.tienda = tienda;
-        this.distancia = distancia;
         this.repartidorDisponible = repartidorDisponible;
     }
 
@@ -22,13 +19,6 @@ public class PedidoExpress extends Pedido{
         this.tienda = tienda;
     }
 
-    public double getDistancia() {
-        return distancia;
-    }
-
-    public void setDistancia(double distancia) {
-        this.distancia = distancia;
-    }
 
     public boolean isRepartidorDisponible() {
         return repartidorDisponible;
@@ -40,10 +30,10 @@ public class PedidoExpress extends Pedido{
 
     @Override
     public void asignarRepartidor() {
-        System.out.println("[Pedido Express]");
+        System.out.println("Tipo pedido : [Pedido Express]");
         System.out.println("Asignando repartidor....");
-        if (repartidorDisponible && distancia <= 5) {
-            System.out.println("El repartidor está disponible y se encuentra a " + distancia + " km.");
+        if (repartidorDisponible && getDistanciaKm() <= 5) {
+            System.out.println("El repartidor está disponible y se encuentra a " + getDistanciaKm() + " km.");
         } else {
             System.out.println("No hay un repartidor disponible.");
         }
@@ -51,11 +41,21 @@ public class PedidoExpress extends Pedido{
 
 
     public void asignarRepartidor(String nombreRepartidor) {
-        if (repartidorDisponible && distancia <= 5) {
+        if (repartidorDisponible && getDistanciaKm() <= 5) {
             System.out.println("Su repartidor es: " + nombreRepartidor);
         } else {
             System.out.println("El repartidor " + nombreRepartidor + " no cumple con las condiciones.");
         }
+
     }
+
+    @Override
+    public int calcularTiempoEntrega() {
+        int tiempo = 10;
+        if (getDistanciaKm() > 5) {
+            tiempo = tiempo + 5;
+        }
+        return tiempo;
     }
+}
 

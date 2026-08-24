@@ -5,79 +5,29 @@ import models.PedidoComida;
 import models.PedidoEncomienda;
 import models.PedidoExpress;
 
-import java.util.ArrayList;
-import java.util.List;
+
+
 
 public class Main {
     public static void main(String[] args) {
-
-        List<Pedido> pedidos = new ArrayList<>();
-
-        // comida
-
-        Pedido pedido1 = new PedidoComida(1, "Recoleta 221", "COMIDA", "Restaurant comida chilena", 21, true);
-
-        Pedido pedido2 = new PedidoComida(2, "Recoleta 221", "COMIDA", "Restaurant comida peruana", 15, false);
-
-         // encomienda
-        Pedido pedido3 = new PedidoEncomienda(3, "Santiago Centro 444", "ENCOMIENDA", 20, 0.7);
-        Pedido pedido4 = new PedidoEncomienda(4, "Independencia 500", "ENCOMIENDA", 15, 0.3);
-        // express
-        Pedido pedido5 = new PedidoExpress(5, "Santiago Centro 100", "EXPRESS", "Farmacia Ahumada", 5.5, false);
-        Pedido pedido6 = new PedidoExpress(6, "Santiago Centro 100", "EXPRESS", "Cruz Verde", 3.5, true);
-
-        // ---------------- AGREGAR PEDIDOS ----------------
-        pedidos.add(pedido1);
-        pedidos.add(pedido2);
-        pedidos.add(pedido3);
-        pedidos.add(pedido4);
-        pedidos.add(pedido5);
-        pedidos.add(pedido6);
-
-
-        for (Pedido p : pedidos) {
-            p.asignarRepartidor();
-            System.out.println("\n--------------------------------------------------");
+        Pedido[] pedidos = {
+                new PedidoComida(13, "Av Italia 456", 4, "Restaurante Comida Chilena", 20, true),
+                new PedidoEncomienda(14, "Av Independencia 123", 10, 5.2,5.5),
+                new PedidoExpress(15, "Av Apoquindo 1500", 5, "Falabella",false)
+        };
+        for (Pedido pedido : pedidos) {
+            pedido.mostrarResumen();
+            System.out.println("Tiempo estimado de entrega: " + pedido.calcularTiempoEntrega() + " minutos");
+            pedido.asignarRepartidor();
+            System.out.println("--------------------------------------------------\n");
         }
-
-
-
-        // comida
-
-        PedidoComida comida = new PedidoComida(7,"Recoleta 300", "COMIDA", "Restaurant Arabe", 25, true);
-        comida.asignarRepartidor();
-        comida.asignarRepartidor("Juan");
-
-        System.out.println("\n--------------------------------------------------");
-        PedidoComida comida1 = new PedidoComida(8,"Recoleta 320", "COMIDA", "Restaurant Arabe", 30, false);
-        comida1.asignarRepartidor();
-        comida1.asignarRepartidor("Miguel");
-
-
-
-        System.out.println("\n--------------------------------------------------");
-        // encomienda
-        PedidoEncomienda encomienda = new PedidoEncomienda(9,"maipu","encomienda",2.2,3);
-        encomienda.asignarRepartidor();
-        encomienda.asignarRepartidor("Alfredo");
-
-
-        System.out.println("\n--------------------------------------------------");
-        PedidoEncomienda encomienda1 = new PedidoEncomienda(10,"maipu","encomienda",20,0.5);
-        encomienda1.asignarRepartidor();
-        encomienda1.asignarRepartidor("Jose");
-
-        System.out.println("\n--------------------------------------------------");
-        // express
-
-        PedidoExpress express = new PedidoExpress(11,"Independencia","Express","Falabella",5,true);
+  // otra forma
+        PedidoExpress express = new PedidoExpress(15, "Av Apoquindo 1500", 5, "Falabella", true);
+        express.mostrarResumen();
+        System.out.println("Tiempo estimado de entrega: " + express.calcularTiempoEntrega() + " minutos");
         express.asignarRepartidor();
         express.asignarRepartidor("Maria");
-        System.out.println("\n--------------------------------------------------");
-
-        PedidoExpress express1 = new PedidoExpress(12,"Huechuraba","Express","Sodimac",25,false);
-        express1.asignarRepartidor();
-        express1.asignarRepartidor("Hugo");
+        System.out.println("--------------------------------------------------");
 
     }
 }

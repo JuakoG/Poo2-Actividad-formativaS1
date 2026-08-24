@@ -1,19 +1,19 @@
 package models;
 
-import Interfaces.Asignar;
 
-public class Pedido implements Asignar {
+import Interfaces.MostrarResumen;
+
+public abstract class Pedido implements MostrarResumen {
 
     private  int idPedido;
     private String direccionEntrega;
-    private String tipoPedido;
+    private double distanciaKm;
 
-    public Pedido(int idPedido, String direccionEntrega, String tipoPedido) {
+    public Pedido(int idPedido, String direccionEntrega, double distanciaKm) {
         this.idPedido = idPedido;
         this.direccionEntrega = direccionEntrega;
-        this.tipoPedido = tipoPedido;
+        this.distanciaKm = distanciaKm;
     }
-
 
     public int getIdPedido() {
         return idPedido;
@@ -31,19 +31,22 @@ public class Pedido implements Asignar {
         this.direccionEntrega = direccionEntrega;
     }
 
-    public String getTipoPedido() {
-        return tipoPedido;
+    public double getDistanciaKm() {
+        return distanciaKm;
     }
 
-    public void setTipoPedido(String tipoPedido) {
-        this.tipoPedido = tipoPedido;
+    public void setDistanciaKm(double distanciaKm) {
+        this.distanciaKm = distanciaKm;
     }
-
 
     @Override
-    public void asignarRepartidor() {
-
-        System.out.println("Asignando repartidor.");
-
+    public void mostrarResumen() {
+        System.out.println("ID Pedido: " + idPedido);
+        System.out.println("Dirección: " + direccionEntrega);
+        System.out.println("Distancia: " + distanciaKm + " km");
     }
+
+    public abstract int calcularTiempoEntrega();
+
+
 }

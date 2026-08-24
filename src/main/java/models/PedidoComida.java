@@ -8,8 +8,8 @@ public class PedidoComida extends Pedido {
     private int tiempoPreparacion;
     private boolean mochilaTermica;
 
-    public PedidoComida(int idPedido, String direccionEntrega, String tipoPedido, String restaurante, int tiempoPreparacion, boolean mochilaTermica) {
-        super(idPedido, direccionEntrega, tipoPedido);
+    public PedidoComida(int idPedido, String direccionEntrega, double distanciaKm, String restaurante, int tiempoPreparacion, boolean mochilaTermica) {
+        super(idPedido, direccionEntrega, distanciaKm);
         this.restaurante = restaurante;
         this.tiempoPreparacion = tiempoPreparacion;
         this.mochilaTermica = mochilaTermica;
@@ -23,14 +23,6 @@ public class PedidoComida extends Pedido {
         this.restaurante = restaurante;
     }
 
-    public boolean isMochilaTermica() {
-        return mochilaTermica;
-    }
-
-    public void setMochilaTermica(boolean mochilaTermica) {
-        this.mochilaTermica = mochilaTermica;
-    }
-
     public int getTiempoPreparacion() {
         return tiempoPreparacion;
     }
@@ -39,9 +31,18 @@ public class PedidoComida extends Pedido {
         this.tiempoPreparacion = tiempoPreparacion;
     }
 
+    public boolean isMochilaTermica() {
+        return mochilaTermica;
+    }
+
+    public void setMochilaTermica(boolean mochilaTermica) {
+        this.mochilaTermica = mochilaTermica;
+    }
+
+
     @Override
     public void asignarRepartidor() {
-        System.out.println("[Pedido Comida]");
+        System.out.println(" Tipo pedido : [Pedido Comida]");
         System.out.println("Asignando y verificando repartidor....");
         if (mochilaTermica == true) {
             System.out.println("Verificando mochila termica..... Correcto");
@@ -58,4 +59,19 @@ public class PedidoComida extends Pedido {
             System.out.println("→ Pedido no asignado a " + nombreRepartidor   + " el repartidor no cumple con las condiciones ");
         }
     }
+
+    @Override
+    public int calcularTiempoEntrega() {
+        int tiempo = 15;
+        tiempo = tiempo + (int) (2 * getDistanciaKm());
+
+        return tiempo;
+    }
 }
+
+
+
+
+
+
+
